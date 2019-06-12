@@ -1,0 +1,20 @@
+/* pages/scheduleDetail/scheduleDetail.wxss */
+page {
+  background-color: #eee;
+} 
+.header {
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  margin: 0 0 20rpx 0;
+}
+.detail, .remind, .else, .submitButton{
+  margin: 0 0 20rpx 0;
+}
+.tags {
+  float: left;
+  width: 25%;
+  text-align: center;
+  font-size: 25rpx;
+  font-weight: 500;
+}

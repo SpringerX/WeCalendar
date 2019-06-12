@@ -1,0 +1,22 @@
+<!--pages/group/group.wxml-->
+<view wx:if="{{scheduleFlag}}">
+      <view class='reminder' id="{{item['id']}}" bindtap="scheduleDetail" wx:for="{{scheduleData}}" wx:key="schedule" wx:for-index="index" wx:for-item="item" style="height:{{(item['address'])?'165':'135'}}rpx;">
+        <view class='reminderContent'>
+          {{item['content']}}
+        </view>
+        <view class='reminderTime'>
+          {{'时间：' + item['startDate'] + ' ' + item['startTime'] + ' —— ' + item['endDate'] + ' ' + item['endTime']}}
+        </view>
+        <view wx:if="{{item['address']}}" class='reminderAddress'>
+          {{'地点：' + item['address']}}
+        </view>
+      </view>
+    </view>
+
+<view class='newSchedule'>
+  <view class='circleRB' bindtap='newSchedule'>
+    <view class='newScheduleContent'>
+      <i-icon type="add" size='28'/>
+    </view>
+  </view>
+</view>

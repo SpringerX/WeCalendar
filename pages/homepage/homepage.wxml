@@ -1,0 +1,154 @@
+<!--pages/homepage/homepage.wxml-->
+<view class="todayBrief">
+  <view class="left">
+    <picker
+      mode="date"
+      value="{{date}}"
+      start="1901-01-01"
+      end="2100-12-31"
+      bindchange="bindDateChange"
+    >
+      <view class="date">{{selectedMonth}}月</view>
+      <view class="center">
+        <view class="weekDay">星期{{weekShort[idOfDays%7]}}</view>
+        <view class="month">{{selectedYear}}年</view>
+      </view>
+    </picker> 
+  </view>
+  <view class="right">
+    <view class="changeView" bindtap="changeView">月视图</view>
+  </view>
+</view>
+<view class="chooseView">
+  <view id='monthViewTag' bindtap="chooseView">
+    <image class='chooseIcons' src="../../static/icons/calendar.svg"></image>
+    <view class='chooseStrings'>月视图</view>
+  </view>
+  <view id='weekViewTag' bindtap="chooseView">
+    <image class='chooseIcons' src="../../static/icons/menu.svg"></image>
+    <view class='chooseStrings'>周视图</view>
+  </view>
+  <view id='dayViewTag' bindtap="chooseView">
+    <image class='chooseIcons' src="../../static/icons/git-commit.svg"></image>
+    <view class='chooseStrings'>日视图</view>
+  </view>
+  <view id='scheduleViewTag' bindtap="chooseView">
+    <image class='chooseIcons' src="../../static/icons/check-square.svg"></image>
+    <view class='chooseStrings'>日程</view>
+  </view>
+</view>
+
+<view animation="{{animationData}}">
+  <view style="height=100%; width:100%; background-color: #ffffff; border-radius:15rpx;">
+    <view class='calendar'>
+      <view class='week' style='border-bottom:  0.1rpx solid {{chooseFlag?"#ddd":"#fff"}};'>
+        <block wx:for="{{weekShort}}" wx:key="weekShort" wx:for-index="dayIdx" wx:for-item="dayItem">
+          <view class="daysOfWeek {{dayIdx==0||dayIdx==6?'weekend':''}}">
+            {{dayItem}}
+          </view>
+        </block>
+      </view>
+      <swiper
+        style='height: {{100*days.length/7}}rpx;'
+        indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}"
+        interval="{{interval}}"
+        duration="{{duration}}"
+        current="{{currentSwiper}}"
+        easing-function="default"
+        bindchange="swiperAnimationFinish"
+      >
+        <swiper-item>
+          <view class='monthView' style='height: {{90*days.length/7}}rpx;'>
+            <block wx:for="{{days}}" wx:key="monthView" wx:for-index="dayIdx" wx:for-item="dayItem">
+              <view class="days {{dayIdx%7==0||dayIdx%7==6?'weekend':''}} {{dayIdx%7==0?'newWeek':''}}" bindtap='selectDay' id='{{dayIdx}}'>
+                <view class='dayItem' style="color: {{flags[dayIdx]==true?'#000':'#666'}}">{{dayItem}}</view>
+                <block wx:if="{{flagLunar}}">
+                  <view class='dayLunar' style="color: #666">{{(dayLunar[dayIdx]['SolarTermName']=='')?dayLunar[dayIdx]['LDay']:dayLunar[dayIdx]['SolarTermName']}}</view>
+                </block>
+                <view class='circle' style="{{(flags[dayIdx]==true)&&(days[dayIdx]==selectedDay)?'border: 5rpx solid #888;':''}} {{flagLunar?'top: -62rpx':''}};"></view>
+              </view>
+            </block>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view class='monthView' style='height: {{90*days.length/7}}rpx;'>
+            <block wx:for="{{days}}" wx:key="monthView" wx:for-index="dayIdx" wx:for-item="dayItem">
+              <view class="days {{dayIdx%7==0||dayIdx%7==6?'weekend':''}} {{dayIdx%7==0?'newWeek':''}}" bindtap='selectDay' id='{{dayIdx}}'>
+                <view class='dayItem' style="color: {{flags[dayIdx]==true?'#000':'#666'}}">{{dayItem}}</view>
+                <block wx:if="{{flagLunar}}">
+                  <view class='dayLunar' style="color: #666">{{(dayLunar[dayIdx]['SolarTermName']=='')?dayLunar[dayIdx]['LDay']:dayLunar[dayIdx]['SolarTermName']}}</view>
+                </block>
+                <view class='circle' style="{{(flags[dayIdx]==true)&&(days[dayIdx]==selectedDay)?'border: 5rpx solid #888;':''}} {{flagLunar?'top: -62rpx':''}};"></view>
+              </view>
+            </block>
+          </view>
+        </swiper-item>
+        <swiper-item> 
+          <view class='monthView' style='height: {{90*days.length/7}}rpx;'>
+            <block wx:for="{{days}}" wx:key="monthView" wx:for-index="dayIdx" wx:for-item="dayItem">
+              <view class="days {{dayIdx%7==0||dayIdx%7==6?'weekend':''}} {{dayIdx%7==0?'newWeek':''}}" bindtap='selectDay' id='{{dayIdx}}'>
+                <view class='dayItem' style="color: {{flags[dayIdx]==true?'#000':'#666'}}">{{dayItem}}</view>
+                <block wx:if="{{flagLunar}}">
+                  <view class='dayLunar' style="color: #666">{{(dayLunar[dayIdx]['SolarTermName']=='')?dayLunar[dayIdx]['LDay']:dayLunar[dayIdx]['SolarTermName']}}</view>
+                </block>
+                <view class='circle' style="{{(flags[dayIdx]==true)&&(days[dayIdx]==selectedDay)?'border: 5rpx solid #888;':''}} {{flagLunar?'top: -62rpx':''}};"></view>
+              </view>
+            </block>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class='weekView'>
+      
+      </view>
+    </view>
+  </view>
+  
+  <view id='detail'>
+    <view wx:if="{{scheduleFlag}}">
+      <view class='reminder' id="{{item['id']}}" data-scheduleData='{{item}}' wx:for="{{scheduleData}}" wx:key="schedule" wx:for-index="index" wx:for-item="item" bindtap='scheduleDetail'>
+        <view class='reminderContent'>
+          {{item['content']}}
+        </view>
+        <view class='reminderCategory'>
+          <view wx:if="{{item['group_id']}}" style='width:240rpx;'>
+            {{item['group_name']}}
+          </view>
+        </view>
+        <view class='reminderTime'>
+          {{item['startTime'] + '--' + item['endTime']}}
+        </view>
+        <view wx:if="{{item['address']}}" class='reminderAddress'>
+          {{'地点：' + item['address']}}
+        </view>
+      </view>
+    </view>
+    
+    <view class='lunar' wx:if="{{flagLunar}}">
+      <view class='lunarContent'>
+        {{"农历" + dayLunar[idOfDays]["LMonth"] + dayLunar[idOfDays]["LDay"]}}
+      </view>
+      <view class='TianGanDiZhi'>
+        {{dayLunar[idOfDays]["TianGanDiZhiYear"] + dayLunar[idOfDays]["LYear"] + "年 " + dayLunar[idOfDays]["TianGanDiZhiMonth"] + "月 " + dayLunar[idOfDays]["TianGanDiZhiDay"] + "日"}}
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='today' animation="{{todayAnimationData}}"> 
+  <view class='circleRB' bindtap='findToday'>
+    <view class='todayContent'>今</view>
+  </view>
+</view>
+
+<view class='newSchedule'>
+  <view class='circleRB' bindtap='newSchedule'>
+    <view class='newScheduleContent'>
+      <i-icon type="add" size='28'/>
+    </view>
+  </view>
+</view>
+
+<include src="../../utils/tabbar/tabbar.wxml" />
+

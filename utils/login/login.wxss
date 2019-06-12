@@ -1,0 +1,57 @@
+/* pages/login/login.wxss */
+.loginBackground {
+  width: 600rpx;
+  height: 500rpx;
+  border-radius: 20rpx; 
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 300rpx;
+  left: 75rpx;
+  box-shadow: 2rpx 2rpx 20rpx #ddd;
+}
+.loginContainer {
+  width: 560rpx;
+  height: 350rpx;
+  position: relative;
+  bottom: 35rpx;
+}
+.title {
+  float: left;
+  font-size: 35rpx;
+  position: relative;
+  left: 35rpx;
+}
+.closeIcon {
+  position: relative;
+  left: 320rpx;
+  bottom: 15rpx;
+}
+.verificationCodeInput {
+  float: left;
+  width: 290rpx;
+}
+.getVerificationCode {
+  width: 220rpx;
+  height: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+  background-color: #2d8cf0;
+  position: relative;
+  top: 30rpx;
+  left: 20rpx;
+  margin: 0 0 50rpx 0;
+}
+.loginWeCalendar {
+  height: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+  background-color: #2d8cf0;
+  position: relative;
+  top: 20rpx;
+  width: 90%;
+}

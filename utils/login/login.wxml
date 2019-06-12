@@ -1,0 +1,13 @@
+<!--pages/login/login.wxml-->
+<view wx:if='{{loginFlag}}' class='loginBackground'>
+  <view class='loginContainer'>
+    <view class='header'>
+      <text class='title'>绑定手机号</text>
+      <i-icon class="closeIcon" type="close" size="25" bindtap='closeLogin' />
+    </view>
+    <i-input class='phoneNumberInput' value="15932025372" bind:blur="setPhoneNumber" type="number" autofocus placeholder="请输入手机号" maxlength="11" mode="wrapped"/>
+    <i-input class='verificationCodeInput' type="number" placeholder="请输入验证码" maxlength="4" mode="wrapped"/>
+    <button class='getVerificationCode' bindtap='getVerificationCode'>验证码(60s)</button>
+    <button class='loginWeCalendar' bindtap='loginWeCalendar'>登录</button>
+  </view>
+</view>

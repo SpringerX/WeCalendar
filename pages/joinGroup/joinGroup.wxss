@@ -1,0 +1,38 @@
+/* pages/joinGroup/joinGroup.wxss */
+page{
+  background-color: #eee;
+}
+.search {
+   height:85rpx;
+   width:750rpx; 
+   background-color:#fff;
+   margin: 0 0 10rpx 0;
+   padding: 10rpx 0 0 0;
+}
+.searchInput {
+  width:600rpx;
+  float:left;
+  margin:5rpx 0 0 50rpx;
+}
+.groupAvatar {
+  border-radius: 50rpx;
+  width: 100rpx;
+  height: 100rpx;
+  float: left;
+  margin: 0 30rpx 0 30rpx;
+}
+.groupName {
+  width: 400rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 40rpx;
+  font-weight: 500; 
+}
+.groupId {
+  color: #888;
+  height: 20rpx;
+  position: relative;
+  bottom: 12rpx;
+  font-size: 25rpx;
+}

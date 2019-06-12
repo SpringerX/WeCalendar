@@ -1,0 +1,40 @@
+<!--pages/newPublic/newPublic.wxml-->
+<form report-submit="true" bindsubmit="submitPublic" >
+  <view class='detail'>
+    <view class='avatarContainer'>
+      <image class='avatar' src='https://i.loli.net/2017/08/21/599a521472424.jpg'></image>
+    </view>
+    <i-cell-group>
+      <i-cell>
+        <input placeholder="请输入公众日历名称" value="{{name}}" disabled="{{submitFlag}}" focus="true" bindinput='nameChange'/>
+      </i-cell>
+      <i-cell>
+        <input placeholder="请输入公众日历简介" value="{{introduction}}" disabled="{{submitFlag}}" bindinput='introductionChange'/>
+      </i-cell>
+    </i-cell-group>
+  </view>
+  <button wx:if="{{(!submitFlag)&&isPublisher}}" form-type="submit" type="primary" style="background-color:#2d8cf0;">提交公众日历</button>
+</form>
+<button wx:if="{{submitFlag&&isPublisher}}" type="primary" bindtap="editPublicCalendar" style="background-color:#2d8cf0;">编辑公众日历</button>
+
+<view wx:if="{{scheduleFlag}}">
+  <view class='reminder' id="{{item['id']}}" bindtap="scheduleDetail" wx:for="{{scheduleData}}" wx:key="schedule" wx:for-index="index" wx:for-item="item" style="height:{{(item['address'])?'165':'135'}}rpx;">
+    <view class='reminderContent'>
+      {{item['content']}}
+    </view>
+    <view class='reminderTime'>
+      {{'时间：' + item['startDate'] + ' ' + item['startTime'] + ' —— ' + item['endDate'] + ' ' + item['endTime']}}
+    </view>
+    <view wx:if="{{item['address']}}" class='reminderAddress'>
+      {{'地点：' + item['address']}}
+    </view>
+  </view>
+</view>
+<button wx:if="{{submitFlag&&isPublisher}}" type="primary" bindtap="createNormalEvent" style="background-color:#2d8cf0;">创建普通事件</button>
+<button wx:if="{{submitFlag&&isPublisher}}" type="primary" style="background-color:#19be6b;">创建循环事件</button>
+<button wx:if="{{!isPublisher&&!isSubscribed}}" type="primary" catchtap="subscribe" style="background-color:#2d8cf0;">订阅公众日历</button>
+<button wx:if="{{!isPublisher&&isSubscribed}}" type="primary" catchtap="unsubscribe" style="background-color:#2d8cf0;">取消订阅</button>
+<button wx:if="{{submitFlag&&isPublisher}}" bindtap='deletePublicCalendar' type="primary" style="background-color:#ed3f14;">删除公众日历</button>
+
+
+

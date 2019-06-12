@@ -1,0 +1,107 @@
+<!--pages/scheduleDetail/scheduleDetail.wxml-->
+<form report-submit="true" bindsubmit="submit" >
+  <view class='newScheduleContainer'>
+    <view class='header'>
+      <view id='normal' class='tags' bindtap='click'>
+        <i-icon wx:if="{{scheduleTag == 'normal'}}" type="task_fill" color="#2d8cf0" size="30"/>
+        <i-icon wx:else type="task" size="30"/>
+        <view style="color: {{(scheduleTag == 'normal')?'#2d8cf0':'#000000'}};">日程</view>
+      </view>
+      <view id='birthday' class='tags' bindtap='click'>
+        <i-icon wx:if="{{scheduleTag == 'birthday'}}" type="label_fill" color="#2d8cf0" size="30"/>
+        <i-icon wx:else type="label" size="30"/>
+        <view style="color: {{(scheduleTag == 'birthday')?'#2d8cf0':'#000000'}};">生日</view>
+      </view>
+      <view id='aniversary' class='tags' bindtap='click'>
+        <i-icon wx:if="{{scheduleTag == 'aniversary'}}" type="like_fill" color="#2d8cf0" size="30"/>
+        <i-icon wx:else type="like" size="30"/>
+        <view style="color: {{(scheduleTag == 'aniversary')?'#2d8cf0':'#000000'}};">纪念日</view>
+      </view>
+      <view id='countdown' class='tags' bindtap='click'>
+        <i-icon wx:if="{{scheduleTag == 'countdown'}}" type="flag_fill" color="#2d8cf0" size="30"/>
+        <i-icon wx:else type="flag" size="30"/>
+        <view style="color: {{(scheduleTag == 'countdown')?'#2d8cf0':'#000000'}};">倒数日</view>
+      </view>
+    </view>
+    <view class='detail'>
+      <i-cell-group>
+        <i-cell>
+          <input placeholder="请输入事件标题" focus="true" value="{{content}}" bindblur='contentChange'/>
+        </i-cell>
+        <i-cell title="全天事件">
+            <switch slot="footer" checked='{{isWholeDay}}' bindchange="switchChange" color="#2d8cf0"/>
+        </i-cell>
+        <picker slot="footer"  mode="date" value="{{startDate}}" start="1901-01-01" end="2100-12-31" bindchange="startDateChange">
+          <i-cell title="开始日期" is-link>
+              <picker slot="footer"  mode="date" value="{{startDate}}" start="1901-01-01" end="2100-12-31" bindchange="startDateChange">
+                <text>{{startDate}}</text>
+              </picker>
+          </i-cell>
+        </picker>
+        <picker mode="time" value="{{startTime}}" start="00:00" end="23:59" bindchange="startTimeChange">
+          <i-cell title="开始时间" is-link>
+            <picker slot="footer" mode="time" value="{{startTime}}" start="00:00" end="23:59" bindchange="startTimeChange">
+              <text>{{startTime}}</text> 
+            </picker>
+          </i-cell>
+        </picker>
+        <picker slot="footer"  mode="date" value="{{endDate}}" start="1901-01-01" end="2100-12-31" bindchange="endDateChange">
+          <i-cell title="结束日期" is-link>
+              <picker slot="footer"  mode="date" value="{{endDate}}" start="1901-01-01" end="2100-12-31" bindchange="endDateChange">
+                <text>{{endDate}}</text>
+              </picker>
+          </i-cell>
+        </picker>
+        <picker mode="time" value="{{endTime}}" start="00:00" end="23:59" bindchange="endTimeChange">
+          <i-cell title="结束时间" is-link>
+            <picker slot="footer" mode="time" value="{{endTime}}" start="00:00" end="23:59" bindchange="endTimeChange">
+              <text>{{endTime}}</text> 
+            </picker>
+          </i-cell>
+        </picker>
+      </i-cell-group>
+    </view>
+    <view class='remind'>
+      <i-cell-group>
+        <picker bindchange="remindTimeChange" value="{{remindTimeChoicesIndex}}" range="{{remindTimeChoices}}">
+          <i-cell title="提醒(待开发)" is-link>
+            <picker slot="footer" disabled='{{true}}' bindchange="remindTimeChange" value="{{remindTimeChoicesIndex}}" range="{{remindTimeChoices}}">
+              <text>{{remindTimeChoices[remindTimeChoicesIndex]}}</text> 
+            </picker>
+          </i-cell>
+        </picker>
+        <picker bindchange="repeatTimesChange" value="{{repeatTimesChoicesIndex}}" range="{{repeatTimesChoices}}">
+          <i-cell title="重复(待开发)" is-link>
+            <picker slot="footer" disabled='{{true}}' bindchange="repeatTimesChange" value="{{repeatTimesChoicesIndex}}" range="{{repeatTimesChoices}}">
+              <text>{{repeatTimesChoices[repeatTimesChoicesIndex]}}</text> 
+            </picker>
+          </i-cell>
+        </picker>
+        <i-cell title="结束重复(待开发)" wx:if="{{repeatTimesChoicesIndex!=0}}" is-link>
+            <text slot="footer">永不</text> 
+        </i-cell>
+        <i-cell title="时区(待开发)" is-link>
+            <text slot="footer">(GMT+8:00)北京</text> 
+        </i-cell>
+      </i-cell-group>
+    </view>
+    <view class='else'>
+      <i-cell-group>
+        <i-cell>
+            <input maxlength="50" type="text" value='{{address}}' bindblur="updateAddress" placeholder="请输入地点" />
+        </i-cell>
+        <i-cell>
+            <input maxlength="50" type="text" value='{{remark}}' bindblur="updateRemark" placeholder="请输入备注" />
+        </i-cell>
+      </i-cell-group>
+    </view>
+
+    <view class="submitButton">
+      <button form-type="submit" type="primary" style="background-color:#2d8cf0;">提交</button>
+    </view>
+    <view class="deleteButton">
+      <button bindtap='deleteSchedule' type="primary" style="background-color:#ed3f14;">删除</button>
+    </view>
+  </view>
+
+</form>

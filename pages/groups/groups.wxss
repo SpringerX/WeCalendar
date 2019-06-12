@@ -1,0 +1,51 @@
+/* pages/groups/groups.wxss */
+page{
+  background-color: #eee;
+}
+.groupAvatar {
+  border-radius: 50rpx;
+  width: 100rpx;
+  height: 100rpx;
+  float: left;
+  margin: 0 30rpx 0 30rpx;
+}
+.groupName {
+  width: 400rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 40rpx;
+  font-weight: 500; 
+}
+.groupId {
+  color: #888;
+  height: 20rpx;
+  position: relative;
+  bottom: 12rpx;
+  font-size: 25rpx;
+}
+.userWeChatName {
+  color: #666;
+}
+
+.circleRB {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx; 
+  border: 0; background-color: #2d8cf0; 
+  box-shadow:0 0 30px #2d8cf0; 
+  display: flex; 
+  align-items: center;
+}
+.newPlan {
+  position: fixed;
+  bottom: 130rpx;
+  right: 50rpx;
+}
+.joinGroup {
+  width:100%; 
+  color:#fff; 
+  font-size:40rpx; 
+  font-weight:200; 
+  text-align: center;
+}

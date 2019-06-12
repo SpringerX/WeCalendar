@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "i-button": "../../dist/button/index",
+    "i-card": "../../dist/card/index"
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "WeCalendar",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}

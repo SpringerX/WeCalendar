@@ -1,0 +1,31 @@
+<!--pages/mine/mine.wxml-->
+
+<i-cell-group>
+  <view class='weChatInfo'>
+    <i-cell is-link>
+      <view class="userinfo">
+        <image class='userAvatar' wx:if="{{!hasUserInfo && canIUse}}" src='https://i.loli.net/2017/08/21/599a521472424.jpg'></image>
+        <button class='userInfoButton' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <block wx:else>
+          <image class='userAvatar' src='{{userInfo.avatarUrl}}'></image>
+          <view class='userName'>{{userInfo.nickName}}</view>
+          <view class='userWeChatName'>微信号：kaixuan9655</view>
+        </block>
+      </view>
+    </i-cell>
+  </view>
+  <view class='login' wx:if='{{!isLogged}}'>
+    <i-cell title="登录手机号，享数据漫游">
+      <button class="loginButton" slot="footer" bindtap="showLogin">登录</button>
+    </i-cell>
+  </view>
+  <view class='setting'>
+    <i-cell title="查看系统日志" is-link url="/pages/logs/logs"></i-cell>
+    <i-cell title="开关">
+        <switch slot="footer" color="#2d8cf0" checked />
+    </i-cell>
+  </view>
+</i-cell-group>
+
+<include src="../../utils/login/login.wxml" />
+<include src="../../utils/tabbar/tabbar.wxml" />

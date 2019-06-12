@@ -1,0 +1,202 @@
+/* pages/calendar/calendar.wxss */
+page{
+  background-color: #eee;
+}
+.monthView {
+  margin: 0 0 50rpx 0;
+}
+.todayBrief {
+  height: 100rpx;
+  background-color: #fff;
+}
+.left {
+  float: left;
+  position: relative;
+  left: 30rpx;
+}
+.date {
+  font-family: Sans-serif;
+  font-size: 55rpx;
+  font-weight: bold;
+  float: left;
+  position: relative;
+  left: 10rpx;
+  top: 5rpx;
+}
+.chooseView {
+  height: 100rpx;
+  border-bottom: 0.1rpx solid #ddd;
+  margin: 8rpx 0 2rpx 0;
+  background-color: #fff;
+  border-radius: 15rpx;
+}
+#monthViewTag,#weekViewTag,#dayViewTag,#scheduleViewTag {
+  height: 50rpx;
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+.chooseIcons {
+  width: 35rpx;
+  height: 35rpx;
+}
+.chooseStrings {
+  font-size: 25rpx;
+}
+.calendar {
+  width: 100%;
+  margin: 5rpx 0 0 0;
+  position: relative;
+  top: 15rpx;
+}
+.center {
+  float: left;
+  position: relative;
+  left: 20rpx;
+  top: 10rpx;
+  font-size: 25rpx;
+}
+
+.right {
+  float: right;
+  position: relative;
+  right: 40rpx;
+  top: 10rpx;
+}
+
+.daysOfWeek,.days {
+  float: left;
+  width: 103rpx;
+  text-align: center;
+  border: 1rpx solid #fff;
+}
+
+.week {
+  height: 50rpx;
+  border-bottom: 0.1rpx solid #ddd;
+}
+
+.daysOfWeek {
+  font-size: 25rpx;
+  height: 92%;
+  color: #666;
+}
+.days {
+  height: 90rpx;
+}
+.dayItem {
+  width: 100%;
+  position: relative;
+  top: 20%;
+}
+.dayLunar {
+  font-size: 20rpx;
+  position: relative;
+  top: 15rpx;
+}
+.newWeek {
+  clear: left;
+}
+.circle {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 60rpx;
+  border: 5rpx solid transparent;
+  position: relative;
+  top: -48.5rpx;
+  left: 8rpx;
+}
+.circleRB {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx; 
+  border: 0; 
+  background-color: #2d8cf0; 
+  box-shadow:0 0 30px #2d8cf0; 
+  display: flex; 
+  align-items: center;
+}
+.today {
+  position: fixed;
+  bottom: 130rpx;
+  right: 180rpx;
+}
+.newSchedule {
+  position: fixed;
+  bottom: 130rpx;
+  right: 50rpx;
+}
+.todayContent,.newScheduleContent {
+  width:100%; 
+  color:#fff; 
+  font-size:40rpx; 
+  font-weight:200; 
+  text-align: center;
+}
+.reminder {
+  width: 740rpx;
+  height: 120rpx;
+  background-color: #fff;
+  margin: 10rpx 5rpx 0 5rpx;
+  border-radius: 15rpx;
+}
+.reminderContent, .reminderAddress, .reminderCategory{
+  word-break: break-all;/*允许在单词内换行*/
+  text-overflow: -o-ellipsis-lastline;/*css3中webkit内核提供的一个方法类似ellipsis*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;/*自适应盒子*/
+  -webkit-line-clamp: 1;/*此处为1行,如果是两行就改成2*/
+  -webkit-box-orient: vertical;
+}
+.reminderContent {
+  font-size: 35rpx;
+  position: relative;
+  top: 18rpx;
+  left: 35rpx;
+  float: left;
+  height: 50rpx;
+  width: 400rpx;
+}
+.reminderCategory {
+  font-size: 30rpx;
+  position: relative;
+  top: 18rpx;
+  left: 50rpx;
+  height: 50rpx;
+}
+.reminderTime, .reminderAddress{
+  font-size: 25rpx;
+  color: #666;
+  position: relative;
+  top: 20rpx;
+  left: 35rpx;
+}
+.reminderTime{
+  float: left;
+}
+.reminderAddress {
+  left: 50rpx;
+  width: 500rpx;
+}
+.lunar{
+  width: 740rpx;
+  height: 120rpx;
+  background-color: #fff;
+  margin: 10rpx 5rpx 0 5rpx;
+  border-radius: 15rpx;
+}
+.lunarContent {
+  font-size: 35rpx;
+  position: relative;
+  top: 18rpx;
+  left: 35rpx;
+  height: 50rpx;
+}
+.TianGanDiZhi {
+  font-size: 25rpx;
+  color: #666;
+  position: relative;
+  top: 20rpx;
+  left: 35rpx;
+}

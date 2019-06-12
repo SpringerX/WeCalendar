@@ -1,0 +1,23 @@
+<!--pages/square/square.wxml-->
+<view class='search'>
+  <input class='searchInput' focus="true" type="text" confirm-type="search" bindblur='nameChange' placeholder="输入日历名称搜索"/>
+  <i-icon type="search" size='28' bindtap='findPublicCalendars'/>
+</view>
+
+<view class='subscription' id="{{item['id']}}" wx:for="{{publicCalendarData}}" wx:for-index="index" wx:for-item="item" wx:key="publicCalendarData" bindtap="publicCalendarDetail">
+  <i-card title="{{item['name'] + (item['isSubscribed']?'(已订阅)':'')}}" extra="订阅量：{{item['count']}}">
+    <view slot="content">
+      <view class="content">
+        {{item['introduction']}}
+      </view>
+    </view>
+  </i-card>
+</view>
+
+<view class='newPlan'>
+  <view class='circleRB'>
+    <view class='joinPublic' bindtap='joinPublic'><i-icon type="add" size='28'/></view>
+  </view>
+</view>
+
+<include src="../../utils/tabbar/tabbar.wxml" />

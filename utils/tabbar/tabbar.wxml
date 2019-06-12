@@ -1,0 +1,7 @@
+<!--utils/tabbar/tabbar.wxml-->
+<i-tab-bar fixed="true" current="{{ current }}" bindchange="handleChange">
+    <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="日历"></i-tab-bar-item>
+    <i-tab-bar-item key="groups" icon="group" current-icon="group_fill" title="群组"></i-tab-bar-item>
+    <i-tab-bar-item key="square" icon="service" current-icon="service_fill" title="发现"></i-tab-bar-item>
+    <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" dot title="我"></i-tab-bar-item>
+</i-tab-bar>

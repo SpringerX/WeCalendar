@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "i-cell": "../../dist/cell/index",
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index"
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "群组",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}

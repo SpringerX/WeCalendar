@@ -1,0 +1,45 @@
+/* pages/mine/mine.wxss */
+@import "../../utils/login/login.wxss";
+page{
+  background-color: #eee;
+}
+.userWeChatName {
+  color: #666;
+}
+.weChatInfo, .login, .setting{
+  margin: 0 0 20rpx 0;
+}
+.userAvatar {
+  border-radius: 20rpx;
+  width: 150rpx;
+  height: 150rpx;
+  float: left;
+  margin: 20rpx;
+}
+.userName {
+  width: 400rpx;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  font-size: 50rpx;
+  font-weight: bold; 
+}
+.userInfoButton {
+  width: 300rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 60rpx;
+  font-size: 40rpx;
+  font-weight: normal; 
+}
+.loginButton {
+  width: 118rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  color: #fff;
+  background-color: #2d8cf0;
+}

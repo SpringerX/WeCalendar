@@ -1,0 +1,54 @@
+/* pages/newPublic/newPublic.wxss */
+page{
+  background-color: #eee;
+}
+.avatarContainer {
+  width: 750rpx;
+  height: 300rpx;
+  text-align: center;
+  background-color: #fff;
+}
+.avatar {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 100rpx;
+  position: relative;
+  top: 50rpx;
+}
+.detail {
+  margin: 0 0 50rpx 0;
+}
+.reminder {
+  width: 740rpx;
+  height: 135rpx;
+  background-color: #fff;
+  margin: 10rpx 5rpx 0 5rpx;
+  border-radius: 15rpx;
+}
+.reminderContent, .reminderAddress, .reminderCategory{
+  word-break: break-all;/*允许在单词内换行*/
+  text-overflow: -o-ellipsis-lastline;/*css3中webkit内核提供的一个方法类似ellipsis*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;/*自适应盒子*/
+  -webkit-line-clamp: 1;/*此处为1行,如果是两行就改成2*/
+  -webkit-box-orient: vertical;
+}
+.reminderContent {
+  font-size: 45rpx;
+  position: relative;
+  top: 18rpx;
+  left: 35rpx;
+  height: 65rpx;
+  width: 675rpx;
+}
+.reminderTime, .reminderAddress{
+  font-size: 25rpx;
+  color: #666;
+  position: relative;
+  top: 20rpx;
+  left: 35rpx;
+}
+button {
+  margin: 20rpx 0 0 0;
+}

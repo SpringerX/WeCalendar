@@ -1,0 +1,57 @@
+/* pages/group/group.wxss */
+page{
+  background-color: #eee;
+}
+.circleRB {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx; 
+  border: 0; 
+  background-color: #2d8cf0; 
+  box-shadow:0 0 30px #2d8cf0; 
+  display: flex; 
+  align-items: center;
+}
+.newSchedule {
+  position: fixed;
+  bottom: 130rpx;
+  right: 100rpx;
+}
+.newScheduleContent {
+  width:100%; 
+  color:#fff; 
+  font-size:40rpx; 
+  font-weight:200; 
+  text-align: center;
+}
+.reminder {
+  width: 740rpx;
+  height: 135rpx;
+  background-color: #fff;
+  margin: 10rpx 5rpx 0 5rpx;
+  border-radius: 15rpx;
+}
+.reminderContent, .reminderAddress, .reminderCategory{
+  word-break: break-all;/*允许在单词内换行*/
+  text-overflow: -o-ellipsis-lastline;/*css3中webkit内核提供的一个方法类似ellipsis*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;/*自适应盒子*/
+  -webkit-line-clamp: 1;/*此处为1行,如果是两行就改成2*/
+  -webkit-box-orient: vertical;
+}
+.reminderContent {
+  font-size: 45rpx;
+  position: relative;
+  top: 18rpx;
+  left: 35rpx;
+  height: 65rpx;
+  width: 675rpx;
+}
+.reminderTime, .reminderAddress{
+  font-size: 25rpx;
+  color: #666;
+  position: relative;
+  top: 20rpx;
+  left: 35rpx;
+}
