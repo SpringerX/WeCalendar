@@ -16,7 +16,7 @@ page{
   top: 50rpx;
 }
 .detail {
-  margin: 0 0 50rpx 0;
+  margin: 0 0 10rpx 0;
 }
 .reminder {
   width: 740rpx;

@@ -368,6 +368,33 @@ function getGroupInfo(that) {
       });
     },
   });
+  wx.request({
+    url: app.globalData.myWebSiteUrl + 'group/',
+    data: {
+      openid: app.globalData.openid,
+    },
+    header: {},
+    method: 'GET',
+    dataType: 'json',
+    responseType: 'text',
+    success: function(res) {
+      if (res.statusCode != '200') {
+        that.setData({
+          myGroupInfo: [],
+        });
+      } else {
+        that.setData({
+          myGroupInfo: res.data,
+        });
+      }
+    },
+    fail: function (res) {
+      that.setData({
+        myGroupInfo: [],
+      });
+    },
+    complete: function(res) {},
+  })
 }
 
 function getPublicCalendar(that) {
@@ -508,6 +535,61 @@ function getGroupSchedule(group_id, that) {
   });
   
 }
+
+function getPublicSchedule(publicId, that) {
+  wx.request({
+    url: app.globalData.myWebSiteUrl + 'publicSchedule/',
+    data: {
+      publicId: publicId,
+      openid: app.globalData.openid,
+    },
+    header: {},
+    method: 'GET',
+    dataType: 'json',
+    responseType: 'text',
+    success: function (res) {
+      var scheduleFlag = true;
+      if (res.statusCode != '200') {
+        that.setData({
+          scheduleData: [],
+          scheduleFlag: false,
+        });
+      } else {
+        if (res.data.length == 0) {
+          scheduleFlag = false;
+        } else {
+          console.log(res);
+          for (var i = 0; i < res.data.length; i++) {
+            var date1 = res.data[i]['startDateTime'].substr(0, 10);
+            var date2 = res.data[i]['endDateTime'].substr(0, 10);
+            res.data[i]['startTime'] = res.data[i]['startDateTime'].substr(11, 5);
+            res.data[i]['endTime'] = res.data[i]['endDateTime'].substr(11, 5);
+            res.data[i]['startDate'] = date1;
+            res.data[i]['endDate'] = date2;
+            try {
+              wx.setStorageSync('scheduleId-' + res.data[i]['id'], res.data[i]);
+            } catch (e) {
+              console.log(e);
+            }
+          }
+        }
+        that.setData({
+          scheduleData: res.data,
+          scheduleFlag: scheduleFlag,
+        });
+      }
+    },
+    fail: function (res) {
+      that.setData({
+        scheduleData: [],
+        scheduleFlag: false,
+      });
+    },
+    complete: function (res) { },
+  });
+
+}
+
 function deleteSchedule(scheduleId) {
   wx.request({
     url: app.globalData.myWebSiteUrl + 'deleteSchedule/',
@@ -545,5 +627,6 @@ module.exports = {
   getPublicCalendar: getPublicCalendar,
   getSubscribePC: getSubscribePC,
   getGroupSchedule: getGroupSchedule,
+  getPublicSchedule: getPublicSchedule,
   deleteSchedule: deleteSchedule,
 }

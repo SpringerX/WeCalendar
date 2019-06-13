@@ -1,7 +1,7 @@
 <!--pages/groups/groups.wxml-->
 <i-tabs current="{{currentTab}}" bindchange="changeTab">
-    <i-tab key="often" title="常用群组"></i-tab>
-    <i-tab key="else" title="其他群组"></i-tab>
+    <i-tab key="join" title="我加入的群组"></i-tab>
+    <i-tab key="create" title="我创建的群组"></i-tab>
 </i-tabs>
 <i-cell-group>
   <view class='group' id="{{item['id']}}" data-name="{{item['name']}}" wx:for="{{groupInfo}}" wx:key="groupInfo" wx:for-index="index" wx:for-item="item" bindtap='enterTheGroup' wx:if="{{isOften}}">
@@ -12,10 +12,11 @@
     </i-cell>
   </view>
     
-  <view class='group2' bindtap='enterTheGroup' wx:if="{{!isOften}}">
+  <view class='group2' id="{{item['id']}}" data-name="{{item['name']}}" wx:for="{{myGroupInfo}}" wx:key="myGroupInfo" wx:for-index="index" wx:for-item="item" bindtap='editTheGroup' wx:if="{{!isOften}}">
     <i-cell is-link>
-      <image class='userAvatar' src='{{userInfo.avatarUrl}}'></image>
-      <view class='userName'>{{userInfo.nickName}}不常用</view>
+      <image class='groupAvatar' src="{{'https://weapp.springzzz.tech/static/tutorial/images/groups/' + item['id'] + '.jpg'}}"></image>
+      <view class='groupName'>{{item['name']}}</view>
+      <view class='groupId'>{{'ID:' + item['id']}}</view>
     </i-cell>
   </view>
 </i-cell-group>

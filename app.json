@@ -12,7 +12,8 @@
     "utils/login/login",
     "pages/joinGroup/joinGroup",
     "pages/scheduleDetail/scheduleDetail",
-    "pages/publicCalendar/publicCalendar"
+    "pages/publicCalendar/publicCalendar",
+    "pages/newGroup/newGroup"
   ],
   "window": {
     "backgroundTextStyle": "light",

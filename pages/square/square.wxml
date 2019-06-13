@@ -20,4 +20,5 @@
   </view>
 </view>
 
+<view style='height:100rpx;'></view>
 <include src="../../utils/tabbar/tabbar.wxml" />

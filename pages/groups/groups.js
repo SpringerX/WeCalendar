@@ -11,9 +11,10 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    currentTab: 'often',
+    currentTab: 'join',
     isOften: true,
     groupInfo: [],
+    createdGroup: [],
   },
 
   /**
@@ -116,15 +117,15 @@ Page({
     });
   },
   changeTab(e) {
-    if(e.detail.key=='often'){
+    if(e.detail.key=='join'){
       this.setData({
         isOften: true,
-        currentTab: 'often',
+        currentTab: 'join',
       });
     }else{
       this.setData({
         isOften: false,
-        currentTab: 'else',
+        currentTab: 'create',
       });
     }
   },
@@ -139,5 +140,11 @@ Page({
     wx.navigateTo({
       url: '../joinGroup/joinGroup'
     })
+  },
+  editTheGroup(e) {
+    var url = '../newGroup/newGroup?id=' + e.currentTarget.id + '&name=' + e.currentTarget.dataset.name;
+    wx.navigateTo({
+      url: url,
+    });
   },
 })

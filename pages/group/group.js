@@ -1,5 +1,6 @@
 // pages/group/group.js
 var utils = require('../../utils/util');
+var app = getApp();
 Page({
 
   /**
@@ -10,6 +11,8 @@ Page({
     name: '',
     scheduleData: [],
     scheduleFlag: false,
+    avatarFlag: true,
+    avatarBaseUrl: 'https://weapp.springzzz.tech/static/tutorial/images/groups/',
   },
 
   /**
@@ -85,5 +88,24 @@ Page({
     wx.navigateTo({
       url: '../scheduleDetail/scheduleDetail?scheduleId=' + e.currentTarget.id,
     });
+  },
+  exitGroupButton(e) {
+    let that = this;
+    wx.request({
+      url: app.globalData.myWebSiteUrl + 'groupRelationship/',
+      data: {
+        groupId: that.data.id,
+        openid: app.globalData.openid,
+      },
+      header: {},
+      method: 'DELETE',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        console.log(res);
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   },
 })

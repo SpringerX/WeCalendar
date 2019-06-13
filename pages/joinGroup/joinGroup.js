@@ -85,10 +85,49 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function(res) {
+        console.log(res);
         that.setData({
           groupInfo: res.data,
           isClicked: true,
         });
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+  newGroupButton: function(e) {
+    wx.navigateTo({
+      url: '../newGroup/newGroup',
+    });
+  },
+
+  enterTheGroup: function(e) {
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要加入该群组吗？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: 'black',
+      confirmText: '确定',
+      confirmColor: 'green',
+      success: function(res) {
+        if(res.confirm){
+          wx.request({
+            url: app.globalData.myWebSiteUrl + 'groupRelationship/',
+            data: {
+              groupId: e.currentTarget.id,
+              openid: app.globalData.openid,
+            },
+            header: {},
+            method: 'POST',
+            dataType: 'json',
+            responseType: 'text',
+            success: function(res) {
+              console.log(res);
+            },
+          })
+        }
       },
       fail: function(res) {},
       complete: function(res) {},

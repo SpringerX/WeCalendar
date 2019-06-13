@@ -1,0 +1,19 @@
+<!--pages/newGroup/newGroup.wxml-->
+<form report-submit="true" bindsubmit="submitGroup" >
+  <view class='detail'>
+    <view class='avatarContainer'>
+      <image class='avatar' wx:if="{{avatarFlag}}" bindtap='chooseAvatar' src="{{avatarBaseUrl + groupId + '.jpg'}}"></image>
+      <image class='avatar' wx:if="{{!avatarFlag}}" bindtap='chooseAvatar' src='https://i.loli.net/2017/08/21/599a521472424.jpg'></image>
+    </view>
+    <i-cell-group>
+      <i-cell>
+        <input placeholder="请输入群组名称" value="{{name}}" disabled="{{submitFlag}}" focus="true" bindinput='nameChange'/>
+      </i-cell>
+    </i-cell-group>
+  </view>
+  <button form-type="submit" type="primary" style="background-color:#2d8cf0;">提交群组信息</button>
+</form>
+
+<button bindtap='deleteTheGroup' type="primary" style="background-color:#ed3f14;">解散该群组</button>
+
+

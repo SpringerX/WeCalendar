@@ -1,4 +1,4 @@
-/* pages/group/group.wxss */
+/* pages/newGroup/newGroup.wxss */
 page{
   background-color: #eee;
 }
@@ -6,6 +6,7 @@ page{
   width: 750rpx;
   height: 300rpx;
   text-align: center;
+  background-color: #fff;
 }
 .avatar {
   width: 200rpx;
@@ -14,43 +15,14 @@ page{
   position: relative;
   top: 50rpx;
 }
-.groupName {
-  width: 100%;
-  text-align: center;
-  font-size: 45rpx;
-}
 .detail {
-  height: 400rpx;
-  margin: 0 0 20rpx 0;
-  background-color: #fff;
-}
-.circleRB {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50rpx; 
-  border: 0; 
-  background-color: #2d8cf0; 
-  box-shadow:0 0 30px #2d8cf0; 
-  display: flex; 
-  align-items: center;
-}
-.newSchedule {
-  position: fixed;
-  bottom: 130rpx;
-  right: 100rpx;
-}
-.newScheduleContent {
-  width:100%; 
-  color:#fff; 
-  font-size:40rpx; 
-  font-weight:200; 
-  text-align: center;
+  margin: 0 0 50rpx 0;
 }
 .reminder {
   width: 740rpx;
   height: 135rpx;
   background-color: #fff;
-  margin: 0 5rpx 20rpx 5rpx;
+  margin: 10rpx 5rpx 0 5rpx;
   border-radius: 15rpx;
 }
 .reminderContent, .reminderAddress, .reminderCategory{
@@ -76,4 +48,7 @@ page{
   position: relative;
   top: 20rpx;
   left: 35rpx;
+}
+button {
+  margin: 20rpx 0 0 0;
 }

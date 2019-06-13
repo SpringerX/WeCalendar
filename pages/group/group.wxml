@@ -1,17 +1,30 @@
 <!--pages/group/group.wxml-->
-<view wx:if="{{scheduleFlag}}">
-      <view class='reminder' id="{{item['id']}}" bindtap="scheduleDetail" wx:for="{{scheduleData}}" wx:key="schedule" wx:for-index="index" wx:for-item="item" style="height:{{(item['address'])?'165':'135'}}rpx;">
-        <view class='reminderContent'>
-          {{item['content']}}
-        </view>
-        <view class='reminderTime'>
-          {{'时间：' + item['startDate'] + ' ' + item['startTime'] + ' —— ' + item['endDate'] + ' ' + item['endTime']}}
-        </view>
-        <view wx:if="{{item['address']}}" class='reminderAddress'>
-          {{'地点：' + item['address']}}
-        </view>
-      </view>
+
+<form report-submit="true" bindsubmit="submitGroup" >
+  <view class='detail'>
+    <view class='avatarContainer'>
+      <image class='avatar' wx:if="{{avatarFlag}}" bindtap='chooseAvatar' src="{{avatarBaseUrl + id + '.jpg'}}"></image>
+      <image class='avatar' wx:if="{{!avatarFlag}}" bindtap='chooseAvatar' src='https://i.loli.net/2017/08/21/599a521472424.jpg'></image>
     </view>
+    <view class='groupName'>{{name}}</view>
+  </view>
+</form>
+
+<view wx:if="{{scheduleFlag}}">
+  <view class='reminder' id="{{item['id']}}" bindtap="scheduleDetail" wx:for="{{scheduleData}}" wx:key="schedule" wx:for-index="index" wx:for-item="item" style="height:{{(item['address'])?'165':'135'}}rpx;">
+    <view class='reminderContent'>
+      {{item['content']}}
+    </view>
+    <view class='reminderTime'>
+      {{'时间：' + item['startDate'] + ' ' + item['startTime'] + ' —— ' + item['endDate'] + ' ' + item['endTime']}}
+    </view>
+    <view wx:if="{{item['address']}}" class='reminderAddress'>
+      {{'地点：' + item['address']}}
+    </view>
+  </view>
+</view>
+
+<button type="default" class='exitGroupButton' bindtap='exitGroupButton'>退出群组</button>
 
 <view class='newSchedule'>
   <view class='circleRB' bindtap='newSchedule'>

@@ -6,7 +6,7 @@
   </view>
 </view>
 <i-cell-group> 
-  <view class='group' wx:for="{{groupInfo}}" wx:key="groupInfo" wx:for-index="index" wx:for-item="item" bindtap='enterTheGroup'>
+  <view class='group' id="{{item['id']}}" wx:for="{{groupInfo}}" wx:key="groupInfo" wx:for-index="index" wx:for-item="item" bindtap='enterTheGroup'>
     <i-cell is-link>
       <image class='groupAvatar' src="{{'https://weapp.springzzz.tech/static/tutorial/images/groups/' + item['id'] + '.jpg'}}"></image>
       <view class='groupName'>{{item['name']}}</view>
@@ -15,7 +15,6 @@
   </view>
 </i-cell-group>
 
-<view class="newGroupButton" wx:if="{{ isClicked }}">
-  <i-load-more tip="暂无更多数据" loading="{{false}}" />
-  <button type="default">新建群组</button>
-</view>
+<i-load-more tip="暂无更多数据" loading="{{false}}" wx:if="{{ isClicked }}"/>
+
+<button type="default" bindtap='newGroupButton'>新建群组</button>

@@ -1,5 +1,6 @@
 // pages/newPublic/newPublic.js
 var app = getApp();
+const utils = require('../../utils/util');
 Page({
 
   /**
@@ -47,7 +48,7 @@ Page({
         // Do something when catch error
         console.log(e);
       }
-
+      utils.getPublicSchedule(options.publicCalendarId, this);
     }
   },
 
