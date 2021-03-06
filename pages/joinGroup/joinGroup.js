@@ -15,7 +15,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    wx.request({
+      url: app.globalData.myWebSiteUrl + 'searchGroups/',
+      data: {
+        key: that.data.key,
+      },
+      header: {},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          groupInfo: res.data,
+          isClicked: true,
+        });
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    });
   },
 
   /**
